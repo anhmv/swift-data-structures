@@ -1,0 +1,13 @@
+branches:
+  only:
+    - master
+
+os:
+  - osx
+language: swift
+osx_image: xcode11
+install: swift package update
+script:
+  - xcodebuild test -scheme DataStructures-Package -destination platform="macOS" -enableCodeCoverage YES
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
